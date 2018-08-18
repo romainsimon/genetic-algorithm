@@ -75,12 +75,21 @@ describe('Population', () => {
 
   describe('reproduce', () => {
 
-    it('should create new chromosomes in the population', () => {
+    it('should create new children chromosomes in the population', () => {
       const population = new Population(5)
       population.reproduce()
       expect(population.currentPopulation.length).to.equal(5+4+3+2+1)
     })
+  })
 
+  describe('repopulate', () => {
+
+    it('should repopulate with new chromosomes', () => {
+      const population = new Population(50)
+      population.select(.1)
+      population.repopulate()
+      expect(population.currentPopulation.length).to.equal(50)
+    })
   })
 
 })
