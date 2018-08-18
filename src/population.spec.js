@@ -92,4 +92,23 @@ describe('Population', () => {
     })
   })
 
+  describe('evolve', () => {
+
+    it('should evolve population to target generation', () => {
+      const population = new Population()
+      population.evolve(200)
+      expect(population.generation).to.equal(200)
+    })
+
+    it('should increase fitness over generations', () => {
+      const population = new Population()
+      population.evaluate()
+      const firstFitness = population.currentPopulation[0].fitness
+      population.evolve(200)
+      const lastFitness = population.currentPopulation[0].fitness
+      expect(lastFitness).to.be.at.least(firstFitness)
+    })
+
+  })
+
 })

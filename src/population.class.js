@@ -92,7 +92,7 @@ class Population {
    */
   evolve(iterations=1000) {
     while (this.generation<iterations) {
-      console.log(`==> Generation ${current}`)
+      console.log(`==> Generation ${this.generation}`)
       this.evaluate()
       this.select()
       this.reproduce()
