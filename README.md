@@ -47,7 +47,8 @@ console.log(bestChromosome.fitness)
 Trivial example to evolve a population that will have `I AM A ROBOT AND I LIKE TO EAT BOLTS` written in their DNA
 
 ```js
-const alphabet = [ ' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ]
+const alphabet = [ ' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
+  'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ]
 const target = 'I AM A ROBOT AND I LIKE TO EAT BOLTS'
 
 // This fitness function will check which percentage
