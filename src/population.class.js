@@ -5,7 +5,7 @@ const { stringDiff } = require('./fitness')
 
 /**
  * Population is of group of chromosomes
- * I 
+ * I
  *
  */
 class Population {
