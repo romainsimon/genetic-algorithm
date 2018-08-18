@@ -36,7 +36,7 @@ class Population {
       chromosome.calculateFitness(fitnessFunction)
     this.currentPopulation.sort((chA,chB) => chB.fitness - chA.fitness)
     if (this.generation % 100 === 0) {
-      console.log(`  - ${this.currentPopulation[0].dna} (${this.currentPopulation[0].fitness})`)
+      console.log(`  ${this.currentPopulation[0].dna} (${this.currentPopulation[0].fitness})`)
     }
   }
 
@@ -94,12 +94,12 @@ class Population {
    */
   evolve(iterations=1000, fitnessFunction=stringDiff) {
     while (this.generation<iterations) {
-      if (this.generation % 100 === 0) console.log(`==> Generation ${this.generation}`)
+      if (this.generation % 100 === 0) console.log(`- Generation ${this.generation}`)
       this.evaluate(fitnessFunction)
       this.select()
       this.reproduce()
     }
-    console.log(`  - Best Chromosome: ${this.currentPopulation[0].dna}`)
+    console.log(`===> Best Chromosome: ${this.currentPopulation[0].dna}`)
     return this.currentPopulation[0]
   }
 }
