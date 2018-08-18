@@ -71,6 +71,15 @@ describe('Population', () => {
       population.select(.1)
       expect(population.currentPopulation.length).to.equal(10)
     })
+  })
+
+  describe('reproduce', () => {
+
+    it('should create new chromosomes in the population', () => {
+      const population = new Population(5)
+      population.reproduce()
+      expect(population.currentPopulation.length).to.equal(5+4+3+2+1)
+    })
 
   })
 

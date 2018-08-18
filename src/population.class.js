@@ -60,8 +60,8 @@ class Population {
    */
   reproduce() {
     const children = []
-    for (const i in this.currentPopulation) {
-      for (const j=i; j<this.currentPopulation.length; j++) {
+    for (let i=0; i<this.currentPopulation.length; i++) {
+      for (let j=i+1; j<this.currentPopulation.length; j++) {
         const parentA = this.currentPopulation[i]
         const parentB = this.currentPopulation[j]
         const child = parentA.crossover(parentB)
