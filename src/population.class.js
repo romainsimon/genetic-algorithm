@@ -40,6 +40,7 @@ class Population {
 
   /**
    * Select the best chromosomes in the population according to survival rate
+   * Kill all other chromosomes (sorry guys)
    *
    * @param {number}   survivalRate     Percent of population that survives [0-1]
    */
@@ -48,6 +49,27 @@ class Population {
     this.currentPopulation = []
     for (const i in scoredChromosomes)
       if (i <= nbSelected) this.currentPopulation.push(scoredChromosomes[i].chromosome)
+  }
+
+  /**
+   * Reproduce existing chromosomes in population via crossover
+   * Mutates children and adds them to population
+   *
+   * @param {number}   survivalRate     Percent of population that survives [0-1]
+   */
+  reproduce() {
+    const children = []
+    for (const i in this.currentPopulation) {
+      for (const j=i; j<this.currentPopulation.length; j++) {
+        const parentA = this.currentPopulation[i]
+        const parentB = this.currentPopulation[j]
+        const child = parentA.crossover(parentB)
+        child.mutate()
+        children.push(child)
+      }
+    }
+    this.generation++
+    this.currentPopulation = [...this.currentPopulation, ...children]
   }
 
   /**
@@ -72,8 +94,7 @@ class Population {
       console.log(`==> Generation ${current}`)
       this.evaluate()
       this.select()
-      this.repopulate()
-      this.generation++
+      this.reproduce()
     }
     console.log(`  - Best Chromosome: ${this.currentPopulation[0].dna}`)
     return this.currentPopulation[0]
