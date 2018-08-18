@@ -60,7 +60,7 @@ const fitnessFunction = chromosome => {
 const population = new Population(30, target.length, alphabet)
 population.evolve(1200, fitnessFunction)
 
-// Should `I AM A ROBOT AND I LIKE TO EAT BOLTS` (or pretty close)
+// Should be `I AM A ROBOT AND I LIKE TO EAT BOLTS` (or pretty close)
 console.log(population.currentPopulation[0].dna)
 
 ```
