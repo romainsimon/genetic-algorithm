@@ -42,7 +42,7 @@ class Chromosome {
    * @param {Chromosome} chromosomeB    Another chromosome
    */
   crossover(chromosomeB) {
-    const child = new Chromosome()
+    const child = new Chromosome(this.length, this.genesPool)
     const cutPosition = Math.floor(Math.random()*(this.length-1))
     child.dna = this.dna.slice(0, cutPosition) + chromosomeB.dna.slice(cutPosition)
     return child

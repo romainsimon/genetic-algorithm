@@ -31,11 +31,13 @@ class Population {
    *
    * @param {Function} fitnessFunc     Fitness function used to score chromosomes
    */
-  evaluate(fitnessFunc=stringDiff) {
+  evaluate(fitnessFunction=stringDiff) {
     for (const chromosome of this.currentPopulation)
-      chromosome.calculateFitness(fitnessFunc)
+      chromosome.calculateFitness(fitnessFunction)
     this.currentPopulation.sort((chA,chB) => chB.fitness - chA.fitness)
-    console.log(`  - Highest fitness: ${this.currentPopulation[0].fitness}`)
+    if (this.generation % 100 === 0) {
+      console.log(`  - ${this.currentPopulation[0].dna} (${this.currentPopulation[0].fitness})`)
+    }
   }
 
   /**
@@ -90,10 +92,10 @@ class Population {
    *
    * @param {number} iterations     Number of iterations
    */
-  evolve(iterations=1000) {
+  evolve(iterations=1000, fitnessFunction=stringDiff) {
     while (this.generation<iterations) {
-      console.log(`==> Generation ${this.generation}`)
-      this.evaluate()
+      if (this.generation % 100 === 0) console.log(`==> Generation ${this.generation}`)
+      this.evaluate(fitnessFunction)
       this.select()
       this.reproduce()
     }
