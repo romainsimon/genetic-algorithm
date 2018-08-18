@@ -32,9 +32,6 @@ class Population {
    * @param {Function} fitnessFunc     Fitness function used to score chromosomes
    */
   evaluate(fitnessFunc=stringDiff) {
-    const scoredChromosomes = []
-    const numberSelected = Math.ceil(this.populationSize * percent)
-
     for (const chromosome of this.currentPopulation)
       chromosome.fitness(fitnessFunc)
 
@@ -48,6 +45,7 @@ class Population {
    * @param {number}   survivalRate     Percent of population that survives [0-1]
    */
   select(survivalRate=.2) {
+    const numberSelected = Math.ceil(this.populationSize * percent)
     this.currentPopulation = []
     for (const i in scoredChromosomes)
       if (i <= numberSelected) this.currentPopulation.push(scoredChromosomes[i].chromosome)
