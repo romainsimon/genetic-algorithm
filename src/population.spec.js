@@ -41,7 +41,19 @@ describe('Population', () => {
           expect(gene).to.be.oneOf(genesPool)
       }
     })
+  })
 
+  describe('evaluate', () => {
+
+    it('should calculate fitness score for all chromosomes', () => {
+      const population = new Population()
+      population.evaluate()
+      for (const chromosome of population.currentPopulation) {
+        expect(chromosome.fitness).to.be.a('number')
+        expect(chromosome.fitness).to.be.above(0)
+        expect(chromosome.fitness).to.be.below(1)
+      }
+    })
   })
 
 })

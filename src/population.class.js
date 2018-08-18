@@ -33,7 +33,7 @@ class Population {
    */
   evaluate(fitnessFunc=stringDiff) {
     for (const chromosome of this.currentPopulation)
-      chromosome.fitness(fitnessFunc)
+      chromosome.calculateFitness(fitnessFunc)
     this.currentPopulation.sort((chA,chB) => chB.fitness - chA.fitness)
     console.log(`  - Highest fitness: ${this.currentPopulation[0].fitness}`)
   }
