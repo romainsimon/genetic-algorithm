@@ -20,7 +20,7 @@
   </a>
 </div>
 
-## Examples
+## Usage
 
 ```js
 const populationSize = 200
@@ -29,14 +29,38 @@ const genesPool = [0, 1]
 const population = new Population(populationSize, chromosomeLength, genesPool)
 
 const nbGenerations = 10000
-const fitnessFunction = chromosome => ({
-  // => Add fitness function here
+const fitnessFunction = chromosome => (
+  Math.random()
+  // => Add fitness function here instead
   //    Should return a fitness score between 0 and 1
-})
+)
 population.evolve(nbGenerations, fitnessFunction)
 
 const bestChromosome = population.currentPopulation[0]
 console.log(bestChromosome.dna)
 console.log(bestChromosome.fitness)
+
+```
+
+## Example
+
+Trivial example to evolve a population that will have `I AM A ROBOT AND I LIKE TO EAT BOLTS` written in their DNA
+
+```js
+const alphabet = [ ' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ]
+const target = 'I AM A ROBOT AND I LIKE TO EAT BOLTS'
+
+// This fitness function will check which percentage
+// of letters are valid in the generated sentence
+const fitnessFunction = chromosome => {
+  return chromosome.dna.split('')
+    .reduce((acc, current, i) => acc + (current === target[i] ? 1 : 0), 0) / target.length
+}
+
+const population = new Population(30, target.length, alphabet)
+population.evolve(1200, fitnessFunction)
+
+// Should `I AM A ROBOT AND I LIKE TO EAT BOLTS` (or pretty close)
+console.log(population.currentPopulation[0].dna)
 
 ```
