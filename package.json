@@ -1,0 +1,25 @@
+{
+  "name": "genetic-algorithm",
+  "version": "1.0.0",
+  "description": "Genetic Algorithm",
+  "main": "src/population.class.js",
+  "scripts": {
+    "test": "mocha \"./{,!(node_modules)/**/}*.spec.js\""
+  },
+  "author": "Romain Simon <contact@romainsimon.net>",
+  "license": "MIT",
+  "keywords": [
+    "genetic",
+    "algorithm",
+    "evolutionary"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romainsimon/genetic-algorithm"
+  },
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  },
+  "devDependencies": {}
+}
