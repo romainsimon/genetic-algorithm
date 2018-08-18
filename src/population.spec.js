@@ -56,4 +56,22 @@ describe('Population', () => {
     })
   })
 
+  describe('select', () => {
+
+    it('should select only chromosomes with top fitness', () => {
+      const population = new Population(100)
+      population.evaluate()
+      population.select(.1)
+      expect(population.currentPopulation.length).to.equal(10)
+      expect(population.currentPopulation[0].fitness).be.at.least(population.currentPopulation[9].fitness)
+    })
+
+    it('should select chromosomes when no fitness score', () => {
+      const population = new Population(100)
+      population.select(.1)
+      expect(population.currentPopulation.length).to.equal(10)
+    })
+
+  })
+
 })

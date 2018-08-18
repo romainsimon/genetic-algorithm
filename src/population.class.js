@@ -46,9 +46,10 @@ class Population {
    */
   select(survivalRate=.2) {
     const nbSelected = Math.ceil(this.populationSize * survivalRate)
-    this.currentPopulation = []
-    for (const i in scoredChromosomes)
-      if (i <= nbSelected) this.currentPopulation.push(scoredChromosomes[i].chromosome)
+    const newPopulation = []
+    for (const i in this.currentPopulation)
+      if (i < nbSelected) newPopulation.push(this.currentPopulation[i])
+    this.currentPopulation = newPopulation
   }
 
   /**
