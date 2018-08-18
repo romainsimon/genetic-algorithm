@@ -20,9 +20,23 @@
   </a>
 </div>
 
-## Example
+## Examples
 
 ```js
-const population = new Population()
-population.evolve()
+const populationSize = 200
+const chromosomeLength = 40
+const genesPool = [0, 1]
+const population = new Population(populationSize, chromosomeLength, genesPool)
+
+const nbGenerations = 10000
+const fitnessFunction = chromosome => ({
+  // => Add fitness function here
+  //    Should return a fitness score between 0 and 1
+})
+population.evolve(nbGenerations, fitnessFunction)
+
+const bestChromosome = population.currentPopulation[0]
+console.log(bestChromosome.dna)
+console.log(bestChromosome.fitness)
+
 ```
