@@ -51,16 +51,14 @@ class Chromosome {
   /**
    * Mutates some of the genes in the chromosome
    *
-   * @param {Chromosome} chromosomeB    Chance of mutation
+   * @param {number} mutationChance    Chance of mutation
    */
-  mutate(percent=.1) {
-    this.dna = this.dna.split()
-      .map(gene => {
-        if (Math.random() < percent)
-          return this.genesPool[Math.floor(Math.random()*this.genesPool.length)]
-        else
-          return gene
-      }).join('').toString()
+  mutate(mutationChance=.1) {
+    this.dna = this.dna.split('')
+      .map(gene => Math.random() < mutationChance
+        ? this.genesPool[Math.floor(Math.random()*this.genesPool.length)]
+        : gene
+      ).join('').toString()
     return this.dna
   }
 }

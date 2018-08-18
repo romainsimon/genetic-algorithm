@@ -26,9 +26,8 @@ describe('Population', () => {
     })
 
     it('should create a new Population with chromosome length', () => {
-      const size = 5
       const length = 42
-      const population = new Population(size, length)
+      const population = new Population(5, length)
       for (const chromosome of population.currentPopulation)
         expect(chromosome.dna).to.have.lengthOf(length)
     })

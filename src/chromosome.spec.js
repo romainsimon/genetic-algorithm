@@ -108,18 +108,18 @@ describe('Chromosome', () => {
       expect(chromosome.dna).to.equal(oldDNA)
     })
 
-    it.skip('should mutate 50% of genes if chance is .5', () => {
-      const chromosome = new Chromosome(10)
+    it('should mutate ~50% of genes if chance is .5', () => {
+      const genesPool = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
+      const chromosome = new Chromosome(1000, genesPool)
       const oldGenes = chromosome.dna.split('')
-      chromosome.mutate(.5)
+      chromosome.mutate(0.5)
       const newGenes = chromosome.dna.split('')
       let nbMutated = 0
       for (const i in newGenes)
         if (newGenes[i] !== oldGenes[i]) nbMutated++
-      console.log(newGenes)
-      console.log(oldGenes)
-      expect(nbMutated).to.be.above(400)
-      expect(nbMutated).to.be.below(600)
+      const percentMutated = nbMutated/newGenes.length
+      expect(percentMutated).to.be.above(.43)
+      expect(percentMutated).to.be.below(.58)
     })
 
   })

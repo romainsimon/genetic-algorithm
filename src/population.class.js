@@ -5,7 +5,6 @@ const { stringDiff } = require('./fitness')
 
 /**
  * Population is of group of chromosomes
- * I
  *
  */
 class Population {
@@ -28,27 +27,27 @@ class Population {
 
   /**
    * Evalutate the fitness of entire population according to fitness function
+   * Sorts the population from highest fitness score to lowest
    *
    * @param {Function} fitnessFunc     Fitness function used to score chromosomes
    */
   evaluate(fitnessFunc=stringDiff) {
     for (const chromosome of this.currentPopulation)
       chromosome.fitness(fitnessFunc)
-
     this.currentPopulation.sort((chA,chB) => chB.fitness - chA.fitness)
     console.log(`  - Highest fitness: ${this.currentPopulation[0].fitness}`)
   }
 
   /**
-   * Select the best chromosomes
+   * Select the best chromosomes in the population according to survival rate
    *
    * @param {number}   survivalRate     Percent of population that survives [0-1]
    */
   select(survivalRate=.2) {
-    const numberSelected = Math.ceil(this.populationSize * percent)
+    const nbSelected = Math.ceil(this.populationSize * survivalRate)
     this.currentPopulation = []
     for (const i in scoredChromosomes)
-      if (i <= numberSelected) this.currentPopulation.push(scoredChromosomes[i].chromosome)
+      if (i <= nbSelected) this.currentPopulation.push(scoredChromosomes[i].chromosome)
   }
 
   /**
