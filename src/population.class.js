@@ -29,7 +29,7 @@ class Population {
    * Evalutate the fitness of entire population according to fitness function
    * Sorts the population from highest fitness score to lowest
    *
-   * @param {Function} fitnessFunc     Fitness function used to score chromosomes
+   * @param {Function} fitnessFunction     Fitness function used to score chromosomes
    */
   evaluate(fitnessFunction=stringDiff) {
     for (const chromosome of this.currentPopulation)
