@@ -20,6 +20,10 @@
   </a>
 </div>
 
+## Installation
+
+`npm install genetalg`
+
 ## Usage
 
 ```js
