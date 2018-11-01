@@ -1,6 +1,6 @@
 {
   "name": "genetalg",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Genetic Algorithm",
   "main": "index.js",
   "scripts": {
